@@ -120,10 +120,14 @@ body {
     padding: 0.5em;
 }
 
-  .btn:focus {
+.btn:focus {
     outline-color: var(--primary);
     box-shadow: none;
-  }
+}
+.no-data{
+    max-width: 100%;
+}
+
 
 /* mobile styles */
 

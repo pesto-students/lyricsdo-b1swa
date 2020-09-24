@@ -28,12 +28,12 @@ function showData(data) {
     more.innerHTML = `
       ${
         data.prev
-          ? `<button class="btn" onclick="getMoreSongs('${data.prev}')"><i class="fa fa-backward" aria-hidden="true" style="font-size:1.5em;color:#4f2318"></i></button>`
+          ? `<button class="btn" onclick="getMoreSongs('${data.prev}')"><i class="fa fa-backward" aria-hidden="true""></i></button>`
           : ''
       }
       ${
         data.next
-          ? `<button class="btn" onclick="getMoreSongs('${data.next}')"><i class="fa fa-forward" aria-hidden="true" style="font-size:1.5em;color:#4f2318"></i></button>`
+          ? `<button class="btn" onclick="getMoreSongs('${data.next}')"><i class="fa fa-forward" aria-hidden="true""></i></button>`
           : ''
       }
     `;
@@ -44,6 +44,7 @@ function showData(data) {
 
 // Get prev and next songs
 async function getMoreSongs(url) {
+  more.innerHTML = '';
   const res = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
   const data = await res.json();
 
@@ -56,12 +57,13 @@ async function getLyrics(artist, songTitle) {
   const data = await res.json();
 
    if (data.error || !data.lyrics) {
-        lyrics.innerHTML = "Sorry no lyrics found";
+        lyrics.innerHTML = `<h2>Sorry no lyrics found<h2>`;
+        lyrics.innerHTML += `<img class="no-data" src = "./assets/no-data.svg"></img>`;
    } else {
         const formattedLyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>');
 
         lyrics.innerHTML = `
-            <h2><strong>${songTitle}</strong></h2>
+            <h2>${songTitle}</h2>
             <h2>-${artist}</h2>
             <span>${formattedLyrics}</span>
         `;
@@ -70,7 +72,6 @@ async function getLyrics(artist, songTitle) {
   lyrics.innerHTML += `<h3>Here are some more songs of ${artist}</h3>`;
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  // searchSongs(artist);
 
   more.innerHTML = '';
 }
@@ -94,6 +95,7 @@ const searchInput = document.querySelector('input');
 searchInput.addEventListener('keyup',searchItem);
 
 function searchItem(e) {
+  lyrics.innerHTML = "";
   if (e.keyCode == 13)
     searchSongs();
   else

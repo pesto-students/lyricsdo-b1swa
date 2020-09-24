@@ -1,0 +1,148 @@
+/* variables */
+:root{
+    --primary: #4f2318;
+    --secondary: white;
+}
+
+/* reset */
+* {
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+}
+li{
+    list-style-type: none;
+}
+
+/* base styles */
+body {
+    width: 100%;
+    background: linear-gradient(238deg, #ffca6b 0, #e6986c 44%, #ee597d 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    font-size: large;
+    font-size: 20px;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 400;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 1.5em;
+    padding: 1em 1em 0 1em;
+    justify-content: space-between;
+    position: sticky;
+}
+
+.logo {
+    display: flex;
+    grid-template-rows: auto;
+}
+
+.logo-image {
+    max-width: 50px;
+}
+
+button {
+    display: inline-block;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    font-size: 1.5em;
+    color: var(--primary);;
+}
+
+.playlist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 0.5em;
+    padding: 0.5em;
+}
+
+.song {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 5px;
+    background: var(--primary);
+    text-align: center;
+    transition-property: all;
+    transition-duration: 1s;
+    cursor: pointer;
+    color: var(--secondary);
+}
+
+.song:focus {
+    transform: scale(0.8);
+}
+
+.song > img {
+    margin: 1em
+}
+
+/* fonts */
+h1{
+    font-size: 1em;
+    font-family: 'Vast Shadow', cursive;
+    color: var(--secondary);
+    max-width: 50px;
+}
+
+h3{
+    color: var(--secondary);;
+}
+
+body {
+    color: var(--secondary);
+}
+
+#search {
+    padding: 0.5em;
+    margin: 0.5em;
+    /* border: 1px solid blueviolet; */
+    width: 100%;
+    border-radius: 19px;
+    outline-color: var(--primary);
+}
+
+#result,#lyrics {
+    color:var(--primary);
+    text-align: center;
+}
+
+#more {
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5em;
+}
+
+  .btn:focus {
+    outline-color: var(--primary);
+    box-shadow: none;
+  }
+
+/* mobile styles */
+
+
+/* small tablet styles */
+@media screen and (min-width: 620px){
+    .playlist {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+/* large tablets and laptop styles */
+@media screen and (min-width: 960px){
+    .playlist {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+/* desktop styles */
+@media screen and (min-width: 1020px){
+
+}
